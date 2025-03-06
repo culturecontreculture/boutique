@@ -35,7 +35,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <h1 className="text-2xl font-mono">Boutique Minimaliste</h1>
+      <h1 className="text-2xl font-mono">Boutique Minimaliste.</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
         {products.map(product => (
           <div key={product.id} className="border p-4">
