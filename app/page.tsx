@@ -1,10 +1,19 @@
-'use client'; // Ajoutez cette ligne en haut de votre fichier
+'use client';
 
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase/supabaseClient';
 
+// Définir un type pour les produits
+interface Product {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  status: string;
+}
+
 export default function Home() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -13,8 +22,12 @@ export default function Home() {
         .select('*')
         .eq('status', 'active');
 
-      if (error) console.error('Error fetching products:', error);
-      else setProducts(data);
+      if (error) {
+        console.error('Error fetching products:', error);
+      } else {
+        // Typage explicite des données
+        setProducts(data as Product[]);
+      }
     }
 
     fetchProducts();
