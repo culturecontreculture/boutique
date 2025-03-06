@@ -1,7 +1,7 @@
 'use client'; // Ajoutez cette ligne en haut de votre fichier
 
 import { useEffect, useState } from 'react';
-import { supabase } from '../lib/supabaseClient';
+import { supabase } from '../lib/supabase/supabaseClient';
 
 export default function Home() {
   const [products, setProducts] = useState([]);
